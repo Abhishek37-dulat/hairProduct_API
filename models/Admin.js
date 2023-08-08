@@ -4,50 +4,36 @@ const AdminSchema = mongoose.Schema(
   {
     first_name: {
       type: String,
-      minLength: 2,
-      maxLength: 50,
       require: true,
     },
     last_name: {
       type: String,
-      minLength: 2,
-      maxLength: 50,
       require: true,
     },
     email: {
       type: String,
-      minLength: 15,
-      maxLength: 100,
       require: true,
       unique: true,
     },
     phone: {
       type: String,
-      minLength: 10,
-      maxLength: 10,
       require: true,
       unique: true,
     },
     password: {
       type: String,
-      minLength: 5,
       require: true,
     },
     zip_code: {
       type: Number,
-      minLength: 6,
-      maxLength: 6,
       require: true,
     },
     company_name: {
       type: String,
-      minLength: 2,
-      maxLength: 200,
       require: true,
     },
     company_location: {
       type: String,
-      minLength: 10,
       require: true,
     },
     company_logo: {
@@ -55,8 +41,6 @@ const AdminSchema = mongoose.Schema(
     },
     company_registration_number: {
       type: String,
-      minLength: 21,
-      maxLength: 21,
       require: true,
     },
     company_type: {
@@ -89,7 +73,6 @@ const AdminSchema = mongoose.Schema(
     },
     number_of_employee: {
       type: Number,
-      min: 1,
       require: true,
     },
   },

@@ -1,4 +1,4 @@
-const User = require("../models/User");
+const User = require("../models/User.js");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const dotenv = require("dotenv");
@@ -69,16 +69,12 @@ const userLogin = async (req, res, next) => {
         .json({ msg: "username or password doesn't match" });
     }
 
-    let token = jwt.sign(
-      { first_name: userExits.first_name },
-      process.env.SECRET_TOKEN_KEY,
-      { expiresIn: "1h" }
-    );
-    let refreshtoken = jwt.sign(
-      { first_name: userExits.first_name },
-      process.env.REFRESH_TOKEN_KEY,
-      { expiresIn: "48h" }
-    );
+    let token = jwt.sign({ userExits }, process.env.SECRET_TOKEN_KEY, {
+      expiresIn: "1h",
+    });
+    let refreshtoken = jwt.sign({ userExits }, process.env.REFRESH_TOKEN_KEY, {
+      expiresIn: "48h",
+    });
 
     return res.status(200).json({
       msg: "Login successfully",
@@ -104,13 +100,9 @@ const refreshToken = (req, res, next) => {
           error: err,
         });
       } else {
-        let token = jwt.sign(
-          { name: decode.name },
-          process.env.SECRET_TOKEN_KEY,
-          {
-            expiresIn: "5h",
-          }
-        );
+        let token = jwt.sign({ decode }, process.env.SECRET_TOKEN_KEY, {
+          expiresIn: "5h",
+        });
         let refreshtoken = req.body.refreshtoken;
         res.status(200).json({ msg: "new tokens!", token, refreshtoken });
       }

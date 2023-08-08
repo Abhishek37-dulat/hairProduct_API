@@ -3,7 +3,7 @@ const {
   adminRegister,
   adminLogin,
   refreshToken,
-} = require("../controllers/adminController");
+} = require("../controllers/adminController.js");
 
 const adminRoute = express.Router();
 
