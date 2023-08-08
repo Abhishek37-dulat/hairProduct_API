@@ -30,8 +30,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.get("/", async (req, res) => {
   try {
-    console.log("Hair Product");
-    res.send("Hair Product");
+    console.log("Hair Product All");
+    res.send("Hair Product All");
   } catch (error) {
     console.log(error);
   }
