@@ -28,7 +28,14 @@ app.use(cors());
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-
+app.use("/", async (req, res) => {
+  try {
+    console.log("Listening to App");
+    res.send("Hello Hairs");
+  } catch (error) {
+    console.log(error);
+  }
+});
 app.use(morgan("dev"));
 app.use("/images", express.static(imagesDir));
 app.use("/user", userRoute);
